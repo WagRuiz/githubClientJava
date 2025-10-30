@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.una.githubclient.ui.PrimaryController">
+
+    <!-- Padding general -->
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <!-- Barra superior: búsqueda -->
+    <top>
+        <HBox spacing="8" alignment="CENTER_LEFT">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <children>
+                <Label text="Usuario GitHub:"/>
+                <TextField fx:id="txtUsername" promptText="Ej: octocat" HBox.hgrow="ALWAYS"/>
+                <Button fx:id="btnBuscar" text="Buscar" onAction="#onBuscarUsuario"/>
+                <Label fx:id="lblBio" textFill="gray"/>
+            </children>
+        </HBox>
+    </top>
+
+    <!-- Panel izquierdo: perfil -->
+    <left>
+        <VBox spacing="8" prefWidth="260" alignment="TOP_CENTER">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <children>
+                <ImageView fx:id="imgAvatar" fitWidth="200" fitHeight="200" preserveRatio="true"/>
+                <Label fx:id="lblName" style="-fx-font-size:16; -fx-font-weight:bold;"/>
+                <Label fx:id="lblFollowers" text="Seguidores: 0"/>
+                <Label fx:id="lblFollowing" text="Siguiendo: 0"/>
+            </children>
+        </VBox>
+    </left>
+
+    <!-- Centro: tabla de repositorios -->
+    <center>
+        <VBox spacing="5">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <children>
+                <TableView fx:id="tblRepos" prefHeight="360" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colName" text="Nombre" prefWidth="200"/>
+                        <TableColumn fx:id="colLanguage" text="Lenguaje" prefWidth="120"/>
+                        <TableColumn fx:id="colStars" text="⭐ Estrellas" prefWidth="100"/>
+                        <TableColumn fx:id="colUpdated" text="Actualizado" prefWidth="180"/>
+                    </columns>
+                </TableView>
+            </children>
+        </VBox>
+    </center>
+
+    <!-- Derecha: gráfico de lenguajes -->
+    <right>
+        <VBox spacing="8" prefWidth="300" alignment="TOP_CENTER">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <children>
+                <Label text="Lenguajes más usados" style="-fx-font-weight:bold; -fx-font-size:14;"/>
+                <PieChart fx:id="chartLanguages" prefHeight="250"/>
+            </children>
+        </VBox>
+    </right>
+
+</BorderPane>
